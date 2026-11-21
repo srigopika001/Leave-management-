@@ -10,8 +10,7 @@ if (!process.env.JWT_SECRET) {
 require("./db");
 const app = express();
 
-app.use(cors({ origin: (process.env.CLIENT_ORIGIN || "http://localhost:5173").split(",") }));
-app.use(express.json());
+app.use(cors());
 
 app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api/auth", require("./routes/auth"));
