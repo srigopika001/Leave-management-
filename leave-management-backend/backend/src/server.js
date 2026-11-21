@@ -17,9 +17,9 @@ app.get("/api/health", (req, res) => res.json({ ok: true }));
 app.use("/api/auth", require("./routes/auth"));
 app.use("/api/leaves", require("./routes/leaves"));
 app.use("/api/admin", require("./routes/admin"));
-app.use("/auth", authRoutes);
-app.use("/leaves", leaveRoutes);
-app.use("/users", userRoutes);
+app.use("/auth", require("./routes/auth"));
+app.use("/leaves", require("./routes/leaves"));
+app.use("/admin", require("./routes/admin"));
 app.use((req, res) => res.status(404).json({ error: "Route not found." }));
 app.use((err, req, res, next) => {
   console.error(err);
